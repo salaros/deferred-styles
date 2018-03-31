@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Deferred Styles Demo</title>
+  <meta charset="utf-8">
+
+  <!-- Critical CSS goes here -->
+  <style>
+    body.demo>.pusher {
+      display: flex;
+      background: #efefef !important;
+    }
+
+    .loading.progress {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: grid;
+      background-color: #333;
+    }
+
+    .loading.progress>.spinner {
+      margin: auto;
+    }
+
+    .dual-ring {
+      display: inline-block;
+      width: 64px;
+      height: 64px;
+    }
+
+    .dual-ring:after {
+      content: " ";
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes dual-ring {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      .ui.middle.aligned.grid.container {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="demo pushable dimmable">
+
+  <section class="loading progress">
+    <div class="spinner dual-ring"></div>
+  </section>
+
+  <main class="pusher">
+    <section class="ui middle aligned centered stackable container two columns grid">
+
+      <div class="column">
+        <article class="ui fluid teal card">
+
+          <div class="content">
+            <a class="ui yellow right corner label">
+              <i class="hourglass icon"></i>
+            </a>
+
+            <div class="header">
+              Deferred styles:
+              <small>CSS loaded via JavaScript</small>
+            </div>
+          </div><!-- /.content -->
+
+          <div class="content">
+            <img class="ui avatar image" src="https://gravatar.com/avatar/5e190398d80e600e616e71c0cb90883c?s=64&d=mm&r=g"> Zhmayev Yaroslav
+            <span class="meta">
+              <small>aka Salaros</small>
+            </span>
+          </div><!-- /.content -->
+
+          <a href="http://google.com" class="ui image">
+            <img class="ui image" src="https://neilpatel.com/wp-content/uploads/2017/10/google-pagespeed-insights.jpg">
+          </a>
+
+          <div class="content">
+            <a class="ui green ribbon label">100 / 100</a>
+            <div class="header">a Google PageSpeed Insights Score
+            </div>
+            <div class="meta">
+              your web resource deserves
+            </div>
+            <div class="description">
+              If you are seeing this card rendered correctly it means that Semantic UI framework's CSS has been loaded in deferred way
+              (via JavaScript).
+            </div>
+          </div><!-- /.content -->
+
+          <div class="extra content">
+            <button class="ui circular facebook icon button left floated">
+              <i class="facebook icon"></i>
+            </button>
+            <button class="ui circular twitter icon button left floated">
+              <i class="twitter icon"></i>
+            </button>
+            <button class="ui circular linkedin icon button left floated">
+              <i class="linkedin icon"></i>
+            </button>
+            <button class="ui circular google plus icon button left floated">
+              <i class="google plus icon"></i>
+            </button>
+            <span class="right floated star">
+              <a class="ui basic label">
+                <i class="github black large icon"></i> &nbsp; 23 &nbsp;
+                <i class="star icon"></i> &nbsp; 23 &nbsp;
+                <i class="fork icon"></i>
+              </a>
+            </span>
+          </div><!-- /.extra.content -->
+
+          <div class="ui bottom attached green button">
+            Download &nbsp;
+            <i class="download icon"></i>
+          </div>
+
+        </article><!-- /.card -->
+      </div><!-- /.column -->
+
+    </section><!-- /.grid -->
+  </main><!-- /.pusher -->
+
+  <noscript class="deferred styles">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+  </noscript>
+  <script defer async src="script.js"></script>
+
+</body>
+
+</html>
