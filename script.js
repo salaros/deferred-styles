@@ -8,16 +8,16 @@ function loadDeferredStyles() {
         stylesDeferred = document.querySelector('.deferred.styles');
 
     head.innerHTML += stylesDeferred.textContent;
-    stylesDeferred.parentElement.removeChild(stylesDeferred);
 
     // Use the last <img> if any otherwise <link> as a sentinel of page readiness
     var loadingSentinel = document.querySelector('img:last-child') ||
                           document.querySelector('link:last-child');
+    if (loadingSentinel && !loadingSentinel.complete) {
         loadingSentinel.onload = hideLoadingScreen;
         loadingSentinel.onerror = hideLoadingScreen;
-    if (!loadingSentinel || loadingSentinel.complete) {
-        hideLoadingScreen();
+        return;
     }
+    hideLoadingScreen();
 };
 
 function hideLoadingScreen() {
