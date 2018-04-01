@@ -1,5 +1,5 @@
 var loadingProgress = document.querySelector('.loading.progress'),
-    loadingDeley = 250;
+    loadingDeley = 400;
 
 loadingProgress.className = loadingProgress.className.replace('hidden', '');
 
@@ -10,17 +10,17 @@ function loadDeferredStyles() {
     head.innerHTML += stylesDeferred.textContent;
     stylesDeferred.parentElement.removeChild(stylesDeferred);
 
-    var lastStyleSentinel = document.querySelector('link:last-child');
-    if (lastStyleSentinel) {
-        lastStyleSentinel.onload = revealRealContent;
-        lastStyleSentinel.onerror = revealRealContent;
-        return;
+    // Use the last <img> if any otherwise <link> as a sentinel of page readiness
+    var loadingSentinel = document.querySelector('img:last-child') ||
+                          document.querySelector('link:last-child');
+        loadingSentinel.onload = hideLoadingScreen;
+        loadingSentinel.onerror = hideLoadingScreen;
+    if (!loadingSentinel || loadingSentinel.complete) {
+        hideLoadingScreen();
     }
-
-    revealRealContent();
 };
 
-function revealRealContent() {
+function hideLoadingScreen() {
     window.setTimeout(function() {
         loadingProgress.className += ' hidden';
     }, loadingDeley);
