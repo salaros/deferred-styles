@@ -45,6 +45,8 @@
       animation: dual-ring 1.2s linear infinite;
     }
 
+    .hidden { display: none !important }
+
     @keyframes dual-ring {
       0% {
         transform: rotate(0deg);
@@ -64,7 +66,7 @@
 
 <body class="demo pushable dimmable">
 
-  <section class="loading progress">
+  <section class="loading progress hidden">
     <div class="spinner dual-ring"></div>
   </section>
 
@@ -145,7 +147,7 @@
   <noscript class="deferred styles">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
   </noscript>
-  <script defer async src="script.js"></script>
+  <script async src="script.js"></script>
 
 </body>
 
