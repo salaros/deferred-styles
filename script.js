@@ -1,8 +1,6 @@
 var loadingProgress = document.querySelector('.loading.progress'),
     loadingDeley = 400;
 
-loadingProgress.className = loadingProgress.className.replace('hidden', '');
-
 function loadDeferredStyles() {
     var head = document.head || document.getElementsByTagName('head')[0],
         stylesDeferred = document.querySelector('.deferred.styles');
